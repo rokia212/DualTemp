@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="img/logo.png">
+<meta charset="UTF-8">
+<title>Dual Heater Laboratory Compressor</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #F5F7F6;
+  color: #1E1E1E;
+  overflow-x: hidden;
+}
+
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  background: rgba(15, 61, 46, 0.95);
+  z-index: 100;
+}
+
+nav h1 {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+nav ul {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+}
+
+nav ul li {
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  position: relative;
+}
+
+
+nav ul li::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background: #4CAF93;
+  transition: 0.3s ease;
+}
+
+nav ul li:hover::after {
+  width: 100%;
+  right: auto;
+  left: 0;
+}
+
+
+.hero {
+  height: 100vh;
+  padding-top: 80px;
+  background: linear-gradient(rgba(15, 61, 46, 0.85), rgba(15, 61, 46, 0.85)),
+              url("PUT-YOUR-PROTOTYPE-IMAGE-HERE.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+}
+
+#three-text {
+  width: 100%;
+  height: 180px;
+}
+
+.hero-buttons {
+  margin-top: 40px;
+  display: flex;
+  gap: 25px;
+}
+
+
+.glow-button {
+  --glow-color: #0f3d2e;           
+  --outer-glow-color: #4CAF93;    
+  
+  position: relative;
+  width: 190px;
+  height: 60px;
+  background-color: #111;
+  border: 1px solid transparent;
+  border-radius: 35px;
+  color: #aaa;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+
+.glow-button::before {
+  content: "";
+  position: absolute;
+  top: var(--y, 50%);
+  left: var(--x, 50%);
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.glow-button:hover::before {
+  opacity: 1;
+}
+
+
+.glow-button:hover {
+  color: #ffffff;
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.4);
+
+  box-shadow: 0 0 25px 5px rgba(76, 175, 147, 0.7), 
+              0 0 50px 10px rgba(76, 175, 147, 0.3);
+}
+
+.glow-button span {
+  position: relative;
+  z-index: 2;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+
+section {
+  padding: 120px 80px;
+}
+
+.section-title {
+  font-size: 38px;
+  color: #0F3D2E;
+}
+
+.section-text {
+  max-width: 600px;
+  margin-top: 20px;
+  color: #555;
+  line-height: 1.6;
+}
+
+
+.problem {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.problem img {
+  width: 420px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 70px;
+}
+
+.card {
+  width: 260px;
+  background: white;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  transition: 0.35s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card .content {
+  padding: 25px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.card.center {
+  transform: scale(1.18);
+  background: #0F3D2E;
+  color: white;
+  z-index: 2;
+}
+
+.card:hover {
+  transform: translateY(-12px) scale(1.05);
+}
+
+
+.comparison {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 80px;
+}
+
+.compare-card {
+  width: 260px;
+  padding: 35px;
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  text-align: center;
+  font-weight: 600;
+}
+
+.lightning {
+  width: 120px;
+  height: 120px;
+  background: #eee;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  font-size: 13px;
+  border: 2px dashed #ccc;
+}
+
+footer {
+  background: #0F3D2E;
+  color: white;
+  padding: 60px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+.hero {
+  height: 100vh;
+  padding-top: 80px;
+  
+
+  background: 
+    linear-gradient(rgba(15, 61, 46, 0.7), rgba(15, 61, 46, 0.1)), /* الطبقة الخضراء */
+   url("img/prototype.jpeg");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; 
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+}
+
+.hero {
+  height: 100vh;
+  padding-top: 80px;
+  
+ 
+  background: 
+    linear-gradient(rgba(15, 61, 46, 0.7), rgba(15, 61, 46, 0.3)), 
+    url("img/prototype.jpeg"); 
+
+  background-size: 80%;
+  background-position: center;
+  background-attachment: fixed; 
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+}
+.small {
+  color: mediumspringgreen;
+}
+.p {
+  padding-top: 5px;
+  padding-left:7px ;
+}
+.head_card {
+  color: #0f3d2e;
+}
+.signal {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px; ;
+}
+.Traditional_Compressor{
+ margin-bottom: 30px;
+}
+.compare-card {
+    width: 320px; 
+    height: 300px;
+    padding: 35px 25px;
+    background: white;
+    border-radius: 22px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+}
+
+
+.Traditional_Compressor {
+    color: #0F3D2E; 
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px; 
+    width: 100%;
+    text-align: center; 
+    line-height: 1.4;
+}
+
+
+.compare-card h5 {
+    color: #555; 
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.8; 
+    text-align: left;
+    margin: 0;
+    padding-left: 10px;
+}
+
+
+.lightning {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid #fff;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.signal {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.compare-card:hover {
+    transform: translateY(-10px);
+}
+.footer {
+ text-align: left;
+}
+.footer {
+  background: #0F3D2E;
+  color: white;
+  padding: 60px 80px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  max-width: 1200px;
+  margin: 0 auto; 
+}
+
+.footer-info {
+  text-align: left; 
+}
+
+.footer-info h2 {
+  margin-bottom: 10px;
+  color: #4CAF93; 
+}
+
+.email-links {
+  display: flex;
+  flex-direction: column; 
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.email-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.email-links a:hover {
+  color: white;
+  text-decoration: underline;
+}
+.footer-image img {
+  width: 150px;  
+  height: 150px;
+  border-radius: 50%; 
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.2); /* إطار خفيف حول الدائرة */
+}
+
+.copyright {
+  font-size: 13px;
+  opacity: 0.6;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+  .footer-info {
+    text-align: center;
+  }
+}
+.footer_logo img {
+  width: 300px;  
+  height: 300px; 
+  border-radius: 50%;
+  object-fit: cover;
+  background: white; 
+  padding: 5px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h1>Dual Heater Laboratory Compressor</h1>
+  <ul>
+    <li>Home</li>
+    <li>Project</li>
+    <li>Catalog</li>
+    <li>Donate</li>
+    <li>Impact</li>
+    <li>Contact</li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div id="three-text"></div>
+<h4 class="small">A sustainable air compression system built from recycled electronic waste, <br>
+designed to reduce cost, energy consumption, and environmental impact.</h4>
+  <div class="hero-buttons">
+    <button class="glow-button"><span>Donate</span></button>
+    <button class="glow-button"><span>Catalog</span></button>
+  </div>
+</div>
+
+<section class="problem">
+  <div>
+    <h2 class="section-title">The Problem</h2>
+    <p class="section-text">
+      Electronic waste is one of the fastest growing waste streams in the world.
+Millions of electric motors, heaters, and appliances are discarded every year,
+despite containing fully functional components.
+
+At the same time, laboratory equipment such as air compressors remains expensive,
+energy-intensive, and inaccessible for many educational and research environments.
+  </div>
+
+  <img src="img/recycling.jpeg" alt="">
+</section>
+
+<section>
+  <h2 class="section-title" style="text-align:center">Our Solution</h2>
+  <p class="p">We transform discarded electronic components into a fully functional
+<br>dual-heater laboratory air compressor through a simple and scalable process.</p>
+  <div class="cards">
+    <div class="card">
+      <img src="https://www.choice.com.au/wp-content/uploads/2023/01/recycling-symbol-surrounded-by-old-electronics.jpg">
+      <div class="content"><h3 class="head_card">Component Collection</h3> <br> <h5>collect discarded motors, heaters, and electronic components
+that would otherwise end up as waste.</h5>  </div>
+    </div>
+
+    <div class="card center">
+      <img src="img/cons.jpeg">
+      <div class="content"><h3>Rebuild & Assemble</h3><br><h5>Components are tested, repurposed, and assembled into a
+dual-heater air compression system designed for laboratory use.</h5></div>
+    </div>
+
+    <div class="card">
+      <img src="https://www.expresswater.com/cdn/shop/files/PRTWH14G_1292x.jpg?v=1690503100">
+      <div class="content"><h3 class="head_card">Test & Optimize</h3> <br> <h5>The system is tested for pressure, temperature, and efficiency
+to ensure safe and reliable performance.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title" style="text-align:center">Why Choose Our Compressor?</h2>
+
+  <div class="comparison">
+    <div class="compare-card"><div class="Traditional_Compressor"><b>Traditional Compressor</b></div> <h5>-High manufacturing cost<br>
+-High energy consumption<br>
+-Non-sustainable materials<br>
+-Difficult to repair<br>
+-one function and seperated devices that makes the usage of them is difficult</h5></div>
+    <div class="lightning"><img src="img/signal.jpeg" alt="" class="signal"></div>
+    <div class="compare-card" ><div class="Traditional_Compressor"><b>Recycled Dual Heater Laboratory Compressor</b></div> <h5>-Built from recycled components
+<br>
+-Lower cost & energy usage
+<br>
+-Sustainable and repairable
+<br>
+-Dual function(as Air compressor , Hot air station )
+<br>
+-Educational & scalable design</div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+    
+    <div class="footer-info">
+      <h2>Contact us:</h2>
+      <h4>E-Mails of team members</h4>
+      <div class="email-links">
+        <a href="mailto:jana.1924508@stemgharbiya.moe.edu.eg">Jana M. Elhebishy</a>
+        <a href="mailto:jana.1924510@stemgharbiya.moe.edu.eg">Jana M. Ghattas</a>
+        <a href="mailto:rfka.1924520@stemgharbiya.moe.edu.eg">Rfka A. Tadros</a>
+        <a href="mailto:rokia.1924521@stemgharbiya.moe.edu.eg">Rokia S. Eltras</a>
+      </div>
+    </div>
+
+    <div class="footer_logo">
+      <img src="img/logo.png" alt="Dual Heater Logo">
+    </div>
+
+  </div>
+  
+  <p class="copyright">© Dual Heater Laboratory Compressor</p>
+</footer>
+
+<script type="module">
+import * as THREE from "https://unpkg.com/three@0.152.2/build/three.module.js";
+
+const container = document.getElementById("three-text");
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(
+  45,
+  window.innerWidth / 260,
+  0.1,
+  100
+);
+camera.position.z = 7;
+
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias:true });
+renderer.setSize(window.innerWidth, 260);
+container.appendChild(renderer.domElement);
+
+
+const canvas = document.createElement("canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = 1600;
+canvas.height = 500;
+
+ctx.fillStyle = "white";
+ctx.textAlign = "center";
+
+ctx.font = "900 140px Poppins";
+ctx.fillText("DUAL HEATER", canvas.width / 2, 200);
+
+ctx.font = "700 96px Poppins";
+ctx.fillText("LABORATORY COMPRESSOR", canvas.width / 2, 340);
+
+
+const positions = [];
+const targets = [];
+
+for (let y = 0; y < canvas.height; y += 5) {
+  for (let x = 0; x < canvas.width; x += 5) {
+    const pixel = ctx.getImageData(x, y, 1, 1).data;
+    if (pixel[0] > 200) {
+      positions.push(
+        (Math.random() - 0.5) * 16,
+        (Math.random() - 0.5) * 8,
+        (Math.random() - 0.5) * 6
+      );
+
+      targets.push(
+        (x - canvas.width / 2) / 110,
+        -(y - canvas.height / 2) / 110,
+        0
+      );
+    }
+  }
+}
+
+const geometry = new THREE.BufferGeometry();
+geometry.setAttribute(
+  "position",
+  new THREE.Float32BufferAttribute(positions, 3)
+);
+
+const material = new THREE.PointsMaterial({
+  color: 0xffffff,
+  size: 0.16,
+  transparent: true,
+  opacity: 0.95
+});
+
+const textParticles = new THREE.Points(geometry, material);
+scene.add(textParticles);
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  const pos = geometry.attributes.position.array;
+  for (let i = 0; i < pos.length; i++) {
+    pos[i] += (targets[i] - pos[i]) * 0.06;
+  }
+
+  geometry.attributes.position.needsUpdate = true;
+  renderer.render(scene, camera);
+}
+animate();
+</script>
+
+<script>
+  document.querySelectorAll('.glow-button').forEach(button => {
+    button.addEventListener('mousemove', (e) => {
+      const rect = button.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      button.style.setProperty('--x', `${x}px`);
+      button.style.setProperty('--y', `${y}px`);
+    });
+  });
+  
+</script>
+
+</body>
+</html>
