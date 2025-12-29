@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DualTemp | Home</title>
+    <style>
+/* GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #eef3f4; 
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #edc113;
+    text-decoration: underline;
+}
+
+/* NAV */
+nav {
+    background: #05445e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+nav .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li {
+    font-size: 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    color: #ff6f61; 
+}
+
+/* HEADER  */
+header {
+    text-align: center;
+    padding: 80px 20px;
+    color: #05445e;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+header p {
+    font-size: 1.2rem;
+}
+
+/* SECTIONS  */
+section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+h2 {
+    color: #05445e;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* BUTTONS */
+button, .btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #ff6f61;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover, .btn:hover {
+    background: #e55b50;
+    transform: scale(1.05);
+}
+
+/* FORM STYLES */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, textarea {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #189ab4;
+}
+
+/*  FOOTER */
+footer {
+    background: #05445e;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/*  RESPONSIVE */
+@media(max-width: 768px){
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    header h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/*Animation*/
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Navbar */
+nav {
+    background: #05445e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    animation: navSlide 1s ease-out forwards;
+}
+
+@keyframes navSlide {
+    from { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+nav ul li a {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: #ff6f61;
+    transition: width 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff6f61;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+section {
+    background: #f4f4f4; 
+    padding: 60px 20px;
+    margin: 30px auto;
+    border-radius: 12px;
+    max-width: 1000px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-10px);        
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2); 
+    background-color: #e0f7fa;           
+}
+
+section h2, section p {
+    transition: transform 0.3s ease;
+}
+
+section:hover h2, section:hover p {
+    transform: translateY(-5px);
+}
+
+</style>
+
+
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <h1>DualTemp Lab Compressor</h1>
+        <p>
+            A student-engineered system that combines compressed air and controlled
+            hot air using repurposed electronic components, designed for educational
+            laboratory use.
+        </p>
+    </div>
+</header>
+
+<nav>
+    <a href="E:\jeffiles\home.html">Home</a>
+    <a href="E:\jeffiles\problem.html">The Problem</a>
+    <a href="E:\jeffiles\project.html">Our Project</a>
+    <a href="E:\jeffiles\donate.html">Donate Parts</a>
+</nav>
+
+<main>
+    <section class="section">
+        <h2>Project Overview</h2>
+        <p>
+            DualTemp addresses two challenges simultaneously: the increasing volume
+            of electronic waste and the limited availability of affordable laboratory
+            equipment in schools. By reusing discarded components, the project delivers
+            a functional, safe, and educational engineering solution.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>Why This Project Matters</h2>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Environmental Impact</h3>
+                <p>
+                    Extends the lifecycle of electronic components that would otherwise
+                    contribute to environmental pollution.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Educational Value</h3>
+                <p>
+                    Supports hands-on learning in thermodynamics, electricity, and
+                    fluid mechanics.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Engineering Practice</h3>
+                <p>
+                    Demonstrates real-world system integration, safety design,
+                    and performance testing.
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    DualTemp Project • Student Engineering Capstone
+</footer>
+<script>
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll', () => {
+    const trigger = window.innerHeight / 1.2;
+    sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < trigger) section.classList.add('visible');
+    });
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

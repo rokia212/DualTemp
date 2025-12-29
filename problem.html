@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DualTemp | The Problem</title>
+    <style>
+/* GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #eef3f4; 
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #edc113;
+    text-decoration: underline;
+}
+
+/* NAV */
+nav {
+    background: #05445e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+nav .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li {
+    font-size: 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    color: #ff6f61; 
+}
+
+/* HEADER  */
+header {
+    text-align: center;
+    padding: 80px 20px;
+    color: #05445e;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+header p {
+    font-size: 1.2rem;
+}
+
+/* SECTIONS  */
+section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+h2 {
+    color: #05445e;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* BUTTONS */
+button, .btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #ff6f61;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover, .btn:hover {
+    background: #e55b50;
+    transform: scale(1.05);
+}
+
+/* FORM STYLES */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, textarea {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #189ab4;
+}
+
+/*  FOOTER */
+footer {
+    background: #05445e;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/*  RESPONSIVE */
+@media(max-width: 768px){
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    header h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/*Animation*/
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Navbar */
+nav {
+    background: #05445e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    animation: navSlide 1s ease-out forwards;
+}
+
+@keyframes navSlide {
+    from { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+nav ul li a {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: #ff6f61;
+    transition: width 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff6f61;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+section {
+    background: #f4f4f4; 
+    padding: 60px 20px;
+    margin: 30px auto;
+    border-radius: 12px;
+    max-width: 1000px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-10px);        
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2); 
+    background-color: #e0f7fa;           
+}
+
+section h2, section p {
+    transition: transform 0.3s ease;
+}
+
+section:hover h2, section:hover p {
+    transform: translateY(-5px);
+}
+
+
+.card {
+    width: 100%;
+    padding: 80px 20px;
+    background: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+    border-radius: 15px;
+
+    /* Animation setup */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Heading and paragraph inside section */
+.card h3 {
+    color: #05445e;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.card-section p {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+/* Button */
+.card button {
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card button:hover {
+    background-color: #ff3b2f;
+    transform: scale(1.05);
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1> The Problem</h1>
+    <p>Why this project is needed</p>
+</header>
+
+<nav>
+    <a href="E:\jeffiles\home.html">Home</a>
+    <a href="E:\jeffiles\problem.html">The Problem</a>
+    <a href="E:\jeffiles\project.html">Our Project</a>
+    <a href="E:\jeffiles\donate.html">Donate Parts</a>
+</nav>
+<br><br>
+<div class="container">
+    <div class="card">
+        <h2>Electronic Waste</h2>
+        <p>
+            Old refrigerators, hair dryers, and motors are often thrown away
+            even though many of their parts still work.
+        </p>
+    </div><br><br><br><br>
+
+    <div class="card">
+        <h2>Limited Lab Equipment</h2>
+        <p>
+            Many schools cannot afford advanced lab tools, limiting hands-on
+            experiments and real engineering experience.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Key Takeaways:</h2>
+        <p>
+            Problem: Waste & Lack of tools  
+            Solution: Reuse & Engineering
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    <p>DualTemp Project © 2025</p>
+</footer>
+<script>
+// Animate sections on scroll
+const sections = document.querySelectorAll('.card');
+
+function animateSections() {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if (sectionTop < triggerBottom) {
+            section.classList.add('visible');
+        }
+    });
+}
+
+window.addEventListener('scroll', animateSections);
+window.addEventListener('load', animateSections);
+</script>
+</body>
+</html>
